@@ -19,3 +19,147 @@
 	* One can also use command line completion in case you don't know which word to search
 		- :help <partial-cmd><tab>
 			* to see the tab option press ctrl-d
+******************************************************************************************
+#6. Transforming and substituting text
+
+	* There are many ways to go insert mode i,a,A(appned eol),I=^i,o(insert after line),O-before
+	* open the file called inserting.txt
+	* ^ and 0 word the same in non-blank character of the line
+	* you can use insert command multiple times by preceding with count number
+	* example - 5o#ESE or 5i*ESE
+	
+	Replace Mode- 
+		* each character you type will be replaced
+		* to use - R
+	*  lowercase r replace one character 
+	* change c is delete+insert
+		* so to replace a word one can use
+			- cw
+	* to import in register while replacing
+		- "(reg-name)cw
+	* to replace till the end of the line
+		- c$
+	* cc - change whole line
+	* C = c$
+	* ~ is used to change case of the word
+	* to change the word to upper case one can use g~ motion
+		- g~w - word case change
+	* however mixed case cannot be handled in ~ so we can use
+		- gUw - word upper case kdflkj this is tell case my ca can case
+		- gUU - line upper case
+	* similarly
+		- guw - lowercase word
+		- guu - lowercase line
+	Joining
+		* J - join lines together (space will be append if required smartly)
+		* gJ - to add line w/o spaces
+		* <count>J - to join number of lines
+
+********************************************************************************
+
+#6.1 Search, find and replace
+
+	*  search in a line (case-sensitive)
+		* f<character> 
+		* F<character> - backwards in a line
+		* ; to search forward
+		* , to move backward
+		* t<character> - search and put cursor before word
+		* T<character>
+		* we can use count with these commands to go to the search number
+		* btw these commands are just motions so we can combine them to any command such as c,d,y 
+		*  we can delete search word by 
+			- dt
+
+	* to search a full word one can use forward-slash
+		-/<search-term>
+		- n to go next
+		- N to go reverse direction
+
+	* to set incsearch (incremental search)
+		- :set incsearch
+	 or 	- :set is
+	* to check a rule is set or not use ?
+		- :set is?
+	* another option is hls (highlight search)
+		- :set hls
+	* to remov highled text use the option
+		- :nohls
+			* this will not remove hls till next search
+	* to disable hightlighting
+		- :set nohls
+	* we can follow a pattern to search and replace
+		* first search with /
+		* with first search replace word by deleting it
+		* then with each subsequent search press . (period) to perform previous replacemnet command, for quick fix this method work well
+
+	* for backword search use '?'<pattern> 
+	* one can use * instead of n to subsequent search to search the whole word
+	* opposite of * is #
+
+	* you can use this search motions with command d,c and y
+
+	* d/<word> will delete everything from your cursor position to the search
+	* "ay/<word> will yank everything from your current curosor position to next search
+
+	Summary 
+	------
+		1. f{char} - Forward Search
+		2. F{char} - Reverse Serach
+		3. t{char} - Forward till search
+		4. T{char} - Reverse till search
+		5. ; - Repeatthe same direction
+		6. , - Repeat in the opposite direction
+
+
+
+
+Part2 - find, replace and search
+==================================
+
+	* find and replace functionality
+		-s/old/new/[flag]
+			-example - :s/net/org/
+	* but it will be perfomed on single line
+	* to change every occurance use g flag
+		-s/old/new/g
+	
+	* you can also precede with the range to operate upon
+		- :[range]s/old/new/[flags]
+		- example :1s/is/isn't
+		- to changing 1 to 5 line :1,5s/for/FOR/g
+	* $=last line , .=current line
+		- example - .,$s/for/FOR/g
+	* %=1,$
+		- %s/for/For/g
+	* to make chnage within a pattern 
+		- syntax :/<pattern-1>,<pattern-2>s/<some-text>/<subs-text>/g
+		- example :/Global/,/Local/s/net/org/g
+	
+	* you can combine these search pattern with line number, $ and others too
+		- example :/Local/,$s/net/org/g
+	* if the pattern contains / use escape caracter in pattern but it is a tedious way
+		- example :s/\/var\/spool\/usr\/local/
+
+	* easy way is to use a different seperator such as # sign 
+		- :s#/var/spool#/usr/local/#
+	* to turn on line number
+		- :set nu
+	
+
+	Summary	
+	------
+		1. /{Pattern} - Forward Search
+		2. ?{pattern} - Search Search
+		3. n - Repeat search in the same direction
+		4. N - Repeat search in the opposite direction
+		5. *- Forward search for word
+		6. #- Reverse search for word
+		7. Range substitution - :[range]s/{pattern}/{string}/[flags]
+		8. Global substitution - :%s/{pattern}/{string}/g
+	
+
+
+
+
+	
