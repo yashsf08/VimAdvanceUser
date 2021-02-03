@@ -1,0 +1,21 @@
+#4. Using Help 
+	* How to use build in help system
+	* for help type 
+		- help <COMMAND>
+	* screen will split in two part the top pane would contain help documentation
+	* while bottom will have the origin file
+	* with cntl-g use can find details of the file
+	* :q to exit help file
+	* ctrl-o is similar to hitting back button in a browser
+	* ctrl-i to jump forward
+	* we can also find documentation of anything mentioned in help.txt
+		by positioning cursor and  
+			- ctrl-]
+ 	* example for more help search 
+		- :help q:
+	* anything inside [] is optional
+	* To swap between windows you can use
+		- ctrl-w ctrl-w
+	* One can also use command line completion in case you don't know which word to search
+		- :help <partial-cmd><tab>
+			* to see the tab option press ctrl-d
