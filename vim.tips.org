@@ -1,0 +1,52 @@
+Complete Vim guide
+====================
+
+Keystrokes			Effect
+----------			------
+
+x/X				deletes/backspace
+<C-v>{123}			Insert character by decimal code
+f{char}/t{char}			Scan Line for Next character (; - repeat, reverse - ,)
+F{char}/T{char}			Scan Line for previous character (; - repeat, reverse - ,)
+/pattern			next match
+?pattern			previous match
+:s/target/replacement		Perform Substitution ( & - repeat, U - Reverse)
+qx{changes}q			Execute Sequences of changes (@x - repeat, U - Reverse)
+*/#				Search and highlight all occurance with the current cursor word (n - Repeat, N - Reverse)
+				Example - * --> cw<word><ESC> --> n --> .
+				Example - (for appending ;) - A;<ESc> --> j --> .
+				Example - (for padding ) - f+ --> s<word><ESC> --> 
+<ESC>o				start inserting new line from insert mode (it is preferrable than to press <CR>)
+[count]<C-a>|<C-x>		To increase or decrese the number by count or default-1 where the cursor is position or in the line
+daw				deletes a word (inclusive of wrapper)
+dap				deletes a paragraph (inclusive of wrapper)
+das				deletes a sentence (inclusive of wrapper)
+
+
+diw				deletes a word (exclusive of wrapper)
+dip				deletes a paragraph (exclusive of wrapper)
+dis				deletes a sentence (exclusive of wrapper)
+g~				to switch case
+gu{motion} | guu		lowercase
+gU{motion} | gUU		uppercase
+c|C				change
+d				delete
+y				yank
+>				shift right
+<				shift leaf
+=				autoindent
+!				filter {motion} lines through an external program
+
+Linewise operations
+-------------------
+yy
+dd
+guu
+gUU
+>>
+<<
+
+(in short repeat the same operator performs the operations linewise)
+
+
+
